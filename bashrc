@@ -26,6 +26,7 @@ alias p='ps -ewwopid,ppid,user,pcpu,vsz,rss,comm,args'
 alias pg='p|egrep'
 alias mrs='mr -d ~ status'
 alias gpg=gpg2
+alias nix-unstable='nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs-channels/tarball/nixpkgs-unstable'
 
 ################################################################################
 # Interactive functions:
