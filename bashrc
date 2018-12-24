@@ -47,7 +47,7 @@ function get() {
 
 ################################################################################
 # Prompt:
-function nonzero_return() {
+function indicate_nonzero_return() {
   RETVAL=$?
 
   if [ "$RETVAL" -ne 0 ]; then
@@ -69,6 +69,6 @@ function restore_prompt_after_nix_shell() {
 }
 
 PROMPT_COMMAND=restore_prompt_after_nix_shell
-PROMPT='\[\e[35m\][ \[\e[34m\]\u\[\e[31m\]@\[\e[32m\]\h\[\e[33m\]:\w \[\e[34m\]$(indicate_nix_shell_status)\[\e[31m\]$(nonzero_return)\[\e[35m\]]\[\e[m\]\n$ '
+PROMPT='\[\e[35m\][ \[\e[34m\]\u\[\e[31m\]@\[\e[32m\]\h\[\e[33m\]:\w \[\e[31m\]$(indicate_nonzero_return)\[\e[34m\]$(indicate_nix_shell_status)\[\e[35m\]]\[\e[m\]\n$ '
 export PS1=$PROMPT
 export PS2='> '
