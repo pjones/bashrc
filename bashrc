@@ -27,6 +27,7 @@ fi
 
 ################################################################################
 # Aliases:
+alias -- -='cd -'
 alias ls='\ls --color=auto --group-directories-first'
 alias lsa='ls -A'
 alias l='\ls -lhF --color=auto --group-directories-first'
