@@ -15,6 +15,17 @@ shopt -s histverify
 shopt -s xpg_echo
 
 ################################################################################
+# Environment variables:
+export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
+export GPG_TTY=$(tty)
+
+if type -t e > /dev/null ; then
+  export EDITOR=e # Emacs!
+else
+  export EDITOR=vi
+fi
+
+################################################################################
 # Aliases:
 alias ls='\ls --color=auto --group-directories-first'
 alias lsa='ls -A'
@@ -39,7 +50,7 @@ function get() {
 function nonzero_return() {
   RETVAL=$?
 
-  if [ $RETVAL -ne 0 ]; then
+  if [ "$RETVAL" -ne 0 ]; then
     echo "($RETVAL) "
   fi
 }
