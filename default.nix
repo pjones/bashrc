@@ -6,13 +6,6 @@ pkgs.stdenvNoCC.mkDerivation {
   meta.description = "Peter's Bash configuration.";
   src = ./.;
 
-  phases =
-   [ "unpackPhase"
-     "installPhase"
-   ];
-
-  installPhase = ''
-    mkdir -p $out/share
-    make PREFIX=$out/share/ install
-  '';
+  enableParallelBuilding = true;
+  makeFlags = [ "PREFIX=$(out)/share/" ];
 }

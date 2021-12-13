@@ -11,7 +11,7 @@ install: $(PREFIX)$(1)
 uninstall::
 	rm -f $(PREFIX)$(1)
 $(PREFIX)$(1): $(1)
-	@ mkdir -p $(dir $$@)
+	@mkdir -p $(dir $(PREFIX)$(1))
 	install -m 0640 $$< $$@
 endef
 
