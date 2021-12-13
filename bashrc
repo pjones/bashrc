@@ -60,7 +60,6 @@ if [ -z "$NIX_BUILD_TOP" ]; then
   alias gpg=gpg2
   alias nix-unstable='nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs-channels/tarball/nixpkgs-unstable'
 
-
-  export PS1='\[\e[35m\][ \[\e[34m\]\u\[\e[31m\]@\[\e[32m\]\h\[\e[33m\]:\w \[\e[31m\]$(indicate_nonzero_return)\[\e[35m\]]\[\e[m\]\n$ '
-  export PS2='> '
+  export PS1='\[\e[35m\][ \[\e[34m\]\u\[\e[31m\]@\[\e[32m\]\h\[\e[33m\]:\w \[\e[31m\]$(indicate_nonzero_return)\[\e[35m\]]\[\e[m\]\n> '
+  export PS2='>> '
 fi
