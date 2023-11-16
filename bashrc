@@ -1,8 +1,11 @@
 #!/bin/bash
 
 ################################################################################
-# The rest of this file should only be used when I'm not using nix-shell:
-if [ -z "$NIX_BUILD_TOP" ]; then
+# The rest of this file should only be used when the shell is
+# interactive and I'm not using nix-shell:
+if [[ $- == *i* ]] &&
+  [ -z "$NIX_BUILD_TOP" ] &&
+  [ -z "$DIRENV_DIR" ]; then
 
   ##############################################################################
   # Interactive functions:
@@ -37,9 +40,8 @@ if [ -z "$NIX_BUILD_TOP" ]; then
   ##############################################################################
   # Environment variables:
   export VIRSH_DEFAULT_CONNECT_URI="qemu:///system"
-  export GPG_TTY=$(tty)
 
-  if type -t e > /dev/null ; then
+  if type -t e >/dev/null; then
     export EDITOR=e # Emacs!
   else
     export EDITOR=vi
@@ -58,8 +60,10 @@ if [ -z "$NIX_BUILD_TOP" ]; then
   alias pg='p|egrep'
   alias mrs='mr -d ~ status'
   alias gpg=gpg2
-  alias nix-unstable='nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs-channels/tarball/nixpkgs-unstable'
 
   export PS1='\[\e[35m\][ \[\e[34m\]\u\[\e[31m\]@\[\e[32m\]\h\[\e[33m\]:\w \[\e[31m\]$(indicate_nonzero_return)\[\e[35m\]]\[\e[m\]\n> '
+  export PS2='>> '
+else
+  export PS1='> '
   export PS2='>> '
 fi
